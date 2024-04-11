@@ -1,0 +1,36 @@
+<div class="container_chat">
+
+    <div class="video">
+      <iframe class="responsive-video" src="https://www.youtube.com/embed/Llour2YvsiI?autoplay=1" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <div class="sidebar">
+      <div class="card">
+        <div class="card-header">
+          Chat
+        </div>
+        <div class="card-body" #messageContainer>
+          <ul id="listOfMessages" #messageListContainer>
+            <ng-container *ngFor="let message of messageList">
+              <li class="singleMessage">
+                <span class="message-info" [ngClass]="{'moderator-message': message.type == 1}">{{ message.type == 1 ? 'Moderador:' : '' }} {{ message.user }} -  {{ message.timestamp }}</span><br>
+                {{ message.message }}
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+                     
+        <div class="card-footer">
+          <form (ngSubmit)="onSubmit()" action=""> 
+            <div class="form-group mb-3">
+              <input class="form-control input" type="text" autocomplete="off" required 
+                [(ngModel)]="model.msg" name="msg" />
+              <button type="submit" class="btn btn-outline-secondary button-css">
+                <mat-icon>send</mat-icon> 
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
