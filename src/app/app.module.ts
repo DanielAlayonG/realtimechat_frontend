@@ -16,7 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import {MatSelectModule} from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 
-const config: SocketIoConfig = { url: 'https://apilivechat-14d30f540cfa.herokuapp.com', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [

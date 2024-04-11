@@ -28,6 +28,9 @@
               <button type="submit" class="btn btn-outline-secondary button-css">
                 <mat-icon>send</mat-icon> 
               </button>
+              <button type="button" *ngIf="moderador" style="margin-left: .2rem;" class="btn btn-outline-secondary button-css" (click)="eliminarHistorial()">
+                <mat-icon>delete</mat-icon> 
+              </button>
             </div>
           </form>
         </div>

@@ -17,7 +17,9 @@ export class MessagesService {
     this.socket.emit('message', { message: msg, user, type });
   }
 
-
+  limpiarChat(){
+    this.socket.emit('limpiarChat');
+  }
 
   getMessage(): Observable<{ username: string, message: string }> {
     return new Observable((observer) => {
@@ -27,12 +29,21 @@ export class MessagesService {
     });
   }
 
-  getHistorial(): Observable<{ username: string, message: string }> {
+  getHistorial(): Observable<any> {
     return new Observable((observer) => {
       this.socket.on('historial', (data: any) => {
         observer.next(data);
       });
     });
   }
+
+  eliminarHistorial(): Observable<any> {
+    return new Observable((observer) => {
+      this.socket.on('limpiarChat', (data: any) => {
+        observer.next(data);
+      });
+    });
+  }
+
 
 }
