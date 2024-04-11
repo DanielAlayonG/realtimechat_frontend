@@ -27,7 +27,7 @@ export class ChatComponent implements OnInit {
   eliminarHistorial(){
 
     Swal.fire({
-      text: '¿Quieres limiar el chat?',
+      text: '¿Quieres limpiar el chat?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
