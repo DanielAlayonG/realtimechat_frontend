@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChatMessage } from '../chat-message';
 import { MessagesService } from '../../services/messages.service';
 
@@ -7,7 +7,7 @@ import { MessagesService } from '../../services/messages.service';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.css']
 })
-export class ChatComponent {
+export class ChatComponent implements OnInit {
   @ViewChild('messageContainer') messageContainer!: ElementRef;
 
   constructor(private messageService: MessagesService) { }
@@ -28,6 +28,11 @@ export class ChatComponent {
     this.messageService.getMessage().subscribe((data: any) => {
       this.messageList.push(data);
       this.scrollToBottom();
+    });
+
+    this.messageService.getHistorial().subscribe((historial: any) => {
+      console.log(historial)
+      this.messageList = historial; // Asignar el historial al array de mensajes
     });
   }
 

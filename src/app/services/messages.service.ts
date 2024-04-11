@@ -7,7 +7,9 @@ import { Observable, Observer} from 'rxjs';
 })
 export class MessagesService {
 
-  constructor(private socket: Socket) { }
+  constructor(private socket: Socket) {
+    this.socket.emit('historial', {});
+  }
 
   sendMessage(msg:string){
     let user = localStorage.getItem("nombre")
@@ -16,9 +18,18 @@ export class MessagesService {
   }
 
 
+
   getMessage(): Observable<{ username: string, message: string }> {
     return new Observable((observer) => {
       this.socket.on('message', (data: { username: string, message: string, type: string}) => {
+        observer.next(data);
+      });
+    });
+  }
+
+  getHistorial(): Observable<{ username: string, message: string }> {
+    return new Observable((observer) => {
+      this.socket.on('historial', (data: any) => {
         observer.next(data);
       });
     });
