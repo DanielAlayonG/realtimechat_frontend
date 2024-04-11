@@ -7,7 +7,7 @@
         <p class="message">No estas registrado <a href="#" (click)="toggleForm()">Crea una cuenta</a></p>
       </form>
       <form *ngIf="!loginVisible" class="login-form"  (ngSubmit)="register()">
-        <input type="email" placeholder="Nombre" name="name" [(ngModel)]="name" required>
+        <input type="text" placeholder="Nombre" name="name" [(ngModel)]="name" required>
         <input type="email" placeholder="Correo" name="username" [(ngModel)]="user" required>
         <select name="type" id="" placeholder="Tipo" [(ngModel)]="type">
             <option value="2" selected>Estudiante</option>

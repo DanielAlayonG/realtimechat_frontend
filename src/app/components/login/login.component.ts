@@ -52,9 +52,15 @@ export class LoginComponent {
   }
 
   register() {
-
     if(this.user.trim() == "" || this.password.trim()  == "" || this.name.trim() == "") {
       Swal.fire('Datos incompletos', 'Por favor, complete todos los campos', 'warning');
+      return;
+    }
+
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(this.user.trim())) {
+      console.log("a")
+      Swal.fire('Correo electrónico inválido', 'Por favor, ingrese un correo electrónico válido', 'error');
       return;
     }
 
@@ -64,7 +70,6 @@ export class LoginComponent {
       "name":  this.name.trim(),
       "type":  this.type.trim()
     }
-    
 
     this.authService.postRegister(dataEnviar).subscribe({
       next: response => {
@@ -91,3 +96,4 @@ export class LoginComponent {
     });
   }
 }
+
